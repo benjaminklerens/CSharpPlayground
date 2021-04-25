@@ -52,7 +52,7 @@ namespace CSharpPlayground
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Medicines}/{action=Index}/{id?}"
                     );
                 endpoints.MapRazorPages();
             });

@@ -20,9 +20,16 @@ namespace CSharpPlayground.Controllers
         }
 
         // GET: Medicines
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchInput)
         {
-            return View(await _context.Medicine.ToListAsync());
+            var movies = from med in _context.Medicine select med;
+
+            if (!String.IsNullOrEmpty(searchInput))
+            {
+                movies = movies.Where(s => s.Name.Contains(searchInput));
+            }
+
+            return View(await movies.ToListAsync());
         }
 
         // GET: Medicines/Details/5
